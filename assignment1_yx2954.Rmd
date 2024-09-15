@@ -32,6 +32,7 @@ data("penguins", package = "palmerpenguins")
     
 ## Part 2
 ```{r}
+
 scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(na.rm = TRUE) +
   labs(
@@ -48,20 +49,18 @@ print(scatterplot)
 
 # Problem 2
 
+Start with generate random vectors and combine them into a data frame
 ```{r}
-samp = rnorm(100)
-length(samp)
+
 set.seed(123)
 
+# Set random vectors
 random_sample = rnorm(10)
-
 logical_vector = random_sample > 0
-
 char_vector = sample(c("我", "爱", "你", "中", "国"), size = 10, replace = TRUE)
-
 factor_vector = factor(sample(c("Level1", "Level2", "Level3"), size = 10, replace = TRUE))
 
-# Create a data frame with these vectors
+# Create a data frame with vectors
 df <- data.frame(
   random_sample = random_sample,
   logical_vector = logical_vector,
@@ -69,9 +68,26 @@ df <- data.frame(
   factor_vector = factor_vector
 )
 
-
 ```
 
+Then get the mean of these random vectors with 'pull()' function.
+```{r}
+mean_rs = mean(pull(df, random_sample))
+mean_lv = mean(pull(df, logical_vector))
+mean_cv = mean(pull(df, char_vector))
+mean_fv = mean(pull(df, factor_vector))
+```
+
+Of 4 random vectors, we can get the mean of random_sample and logical_vector, we cannot get the mean of character_vector and factor_vector. 
+Should convert them into a different type. 
+
+```{r}
+as.numeric(pull(df, logical_vector))
+as.numeric(pull(df, char_vector))
+as.numeric(pull(df, factor_vector))
+```
+
+The 'True' and 'False' value in logical_vector is converted to 1 and 0, allowing the calculation of mean; the value in char_vector are still returning N/A, indicating that one still cannot get the mean; the value in factor_vector are converted to numeric value, allowing the calculation of mean.
 # Section 2
 
 I can take the mean of the sample, too!
