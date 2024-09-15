@@ -1,0 +1,42 @@
+---
+title: "Simple document"
+output: github_document
+---
+
+# Problem 1
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+**Description**: 
+
+*   1. Important variables
+    * The species of penguins includes: `r paste(unique(penguins$species), collapse = ", ")`
+    * The islands of oringin includes: `r paste(unique(penguins$island), collapse = ", ")`
+    * The range of their bill length in mm are [`r  range(penguins$bill_length_mm, na.rm = TRUE)`]
+    * The range of their bill depth in mm are [`r  range(penguins$bill_depth_mm, na.rm = TRUE)`]
+    * The range of their flipper length in mm are [`r  range(penguins$flipper_length_mm, na.rm = TRUE)`]
+    * The range of their body mass in g are [`r  range(penguins$body_mass_g, na.rm = TRUE)`]
+    * All data are from year of `r paste(unique(penguins$year), collapse = ", ")`
+
+*   2. Size of dataset
+    * This dataset includes `r nrow(penguins)` rows, and `r ncol(penguins)` columns
+    
+*   3. Mean flipper length
+    * The mean flipper length is `r mean(penguins$flipper_length_mm)`
+    
+
+```{r}
+
+```
+
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
