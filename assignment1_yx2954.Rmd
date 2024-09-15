@@ -3,8 +3,13 @@ title: "Simple document"
 output: github_document
 ---
 
+```{r, echo = FALSE, message = FALSE}
+library(tidyverse)
+```
+
 # Problem 1
 
+## Part 1
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
@@ -25,9 +30,20 @@ data("penguins", package = "palmerpenguins")
 *   3. Mean flipper length
     * The mean flipper length is `r mean(penguins$flipper_length_mm)`
     
-
+## Part 2
 ```{r}
+scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point(na.rm = TRUE) +
+  labs(
+    title = "Scatterplot of Flipper Length vs Bill Length",
+    x = "Bill Length (mm)",
+    y = "Flipper Length (mm)"
+  ) +
+  theme_classic()
 
+ggsave(filename = "scatterplot_flipper_vs_bill.png", plot = scatterplot, width = 10, height = 10, dpi = 300)
+
+print(scatterplot)
 ```
 
 
