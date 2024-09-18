@@ -68,7 +68,7 @@ df = data.frame(
   factor_vector = factor_vector
 )
 
-print(df)
+df
 ```
 
 Then get the mean of these random vectors with 'pull()' function.
