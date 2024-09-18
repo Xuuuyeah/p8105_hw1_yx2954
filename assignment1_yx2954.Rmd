@@ -33,7 +33,7 @@ data("penguins", package = "palmerpenguins")
 ## Part 2
 ```{r}
 
-scatterplot <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+scatterplot = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point(na.rm = TRUE) +
   labs(
     title = "Scatterplot of Flipper Length vs Bill Length",
@@ -61,7 +61,7 @@ char_vector = sample(c("我", "爱", "你", "中", "国"), size = 10, replace = 
 factor_vector = factor(sample(c("Level1", "Level2", "Level3"), size = 10, replace = TRUE))
 
 # Create a data frame with vectors
-df <- data.frame(
+df = data.frame(
   random_sample = random_sample,
   logical_vector = logical_vector,
   char_vector = char_vector,
