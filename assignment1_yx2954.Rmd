@@ -68,6 +68,7 @@ df <- data.frame(
   factor_vector = factor_vector
 )
 
+print(df)
 ```
 
 Then get the mean of these random vectors with 'pull()' function.
@@ -88,7 +89,3 @@ as.numeric(pull(df, factor_vector))
 ```
 
 The 'True' and 'False' value in logical_vector is converted to 1 and 0, allowing the calculation of mean; the value in char_vector are still returning N/A, indicating that one still cannot get the mean; the value in factor_vector are converted to numeric value, allowing the calculation of mean.
-# Section 2
-
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.

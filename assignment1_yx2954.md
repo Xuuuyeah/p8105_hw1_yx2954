@@ -48,13 +48,85 @@ print(scatterplot)
 
 ![](assignment1_yx2954_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
+# Problem 2
+
+Start with generate random vectors and combine them into a data frame
+
 ``` r
-samp = rnorm(100)
-length(samp)
+set.seed(123)
+
+# Set random vectors
+random_sample = rnorm(10)
+logical_vector = random_sample > 0
+char_vector = sample(c("我", "爱", "你", "中", "国"), size = 10, replace = TRUE)
+factor_vector = factor(sample(c("Level1", "Level2", "Level3"), size = 10, replace = TRUE))
+
+# Create a data frame with vectors
+df <- data.frame(
+  random_sample = random_sample,
+  logical_vector = logical_vector,
+  char_vector = char_vector,
+  factor_vector = factor_vector
+)
+print(df)
 ```
 
-    ## [1] 100
+    ##    random_sample logical_vector char_vector factor_vector
+    ## 1    -0.56047565          FALSE          我        Level2
+    ## 2    -0.23017749          FALSE          中        Level1
+    ## 3     1.55870831           TRUE          我        Level3
+    ## 4     0.07050839           TRUE          我        Level3
+    ## 5     0.12928774           TRUE          国        Level1
+    ## 6     1.71506499           TRUE          你        Level3
+    ## 7     0.46091621           TRUE          爱        Level2
+    ## 8    -1.26506123          FALSE          爱        Level1
+    ## 9    -0.68685285          FALSE          我        Level3
+    ## 10   -0.44566197          FALSE          你        Level1
 
-# Section 2
+Then get the mean of these random vectors with ‘pull()’ function.
 
-I can take the mean of the sample, too! The mean is 2.0559961^{-4}.
+``` r
+mean_rs = mean(pull(df, random_sample))
+mean_lv = mean(pull(df, logical_vector))
+mean_cv = mean(pull(df, char_vector))
+```
+
+    ## Warning in mean.default(pull(df, char_vector)): argument is not numeric or
+    ## logical: returning NA
+
+``` r
+mean_fv = mean(pull(df, factor_vector))
+```
+
+    ## Warning in mean.default(pull(df, factor_vector)): argument is not numeric or
+    ## logical: returning NA
+
+Of 4 random vectors, we can get the mean of random_sample and
+logical_vector, we cannot get the mean of character_vector and
+factor_vector. Should convert them into a different type.
+
+``` r
+as.numeric(pull(df, logical_vector))
+```
+
+    ##  [1] 0 0 1 1 1 1 1 0 0 0
+
+``` r
+as.numeric(pull(df, char_vector))
+```
+
+    ## Warning: NAs introduced by coercion
+
+    ##  [1] NA NA NA NA NA NA NA NA NA NA
+
+``` r
+as.numeric(pull(df, factor_vector))
+```
+
+    ##  [1] 2 1 3 3 1 3 2 1 3 1
+
+The ‘True’ and ‘False’ value in logical_vector is converted to 1 and 0,
+allowing the calculation of mean; the value in char_vector are still
+returning N/A, indicating that one still cannot get the mean; the value
+in factor_vector are converted to numeric value, allowing the
+calculation of mean.
