@@ -1,5 +1,5 @@
 ---
-title: "Simple document"
+title: "P8105_hw1_yx2954"
 output: github_document
 ---
 
