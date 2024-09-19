@@ -83,9 +83,9 @@ Of 4 random vectors, we can get the mean of random_sample and logical_vector, we
 Should convert them into a different type. 
 
 ```{r}
-as.numeric(pull(df, logical_vector))
-as.numeric(pull(df, char_vector))
-as.numeric(pull(df, factor_vector))
+logical_vector  = as.numeric(pull(df, logical_vector))
+char_vector = as.numeric(pull(df, char_vector))
+factor_vector = as.numeric(pull(df, factor_vector))
 ```
 
 The 'True' and 'False' value in logical_vector is automatically converted to 1 and 0 when calculating the mean, allowing the calculation; the value in char_vector are still returning N/A, indicating that char_vector cannot be converted into numerber; the value in factor_vector are converted to numeric value, allowing the calculation of mean.
